@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from "fs";
 import { resolve } from "path";
 import { ImportNameAlias, ImportsMap, PresetName } from "unplugin-auto-import/types";
+import { Plugin, PluginOption } from "vite";
 
 interface dirImportOpts {
   alias?: string, // 导入的路径别名
@@ -11,7 +12,9 @@ interface dirImportOpts {
   exclude?: string[]; // 不导入的文件
 }
 
-export default (...options: (dirImportOpts | PresetName)[]): (ImportsMap | PresetName)[] => {
+const paths: string[] = [];
+
+export const imports = (...options: (dirImportOpts | PresetName)[]): (ImportsMap | PresetName)[] => {
 
   const importMap: ImportsMap = {};
   const presetNames: PresetName[] = [];
@@ -22,6 +25,7 @@ export default (...options: (dirImportOpts | PresetName)[]): (ImportsMap | Prese
       presetNames.push(opt);
       continue;
     }
+
 
     const { target, alias = "@", include = [], exclude = [], prefix = "", suffix = "" } = opt;
 
@@ -34,7 +38,9 @@ export default (...options: (dirImportOpts | PresetName)[]): (ImportsMap | Prese
 
     // 解析所有文件的所有默认导出和普通导出
     for (const item of include) {
-      const file = readFileSync(`src/${target}/${item}`);
+      const path = `src/${target}/${item}`;
+      paths.push(path);
+      const file = readFileSync(path);
       const content = new TextDecoder().decode(file);
       const regExp = /^export\s+(\w+)\s+([\w\{\}\,\s]+)?\(?/gmsi;
       const matches = content.matchAll(regExp);
@@ -62,5 +68,17 @@ export default (...options: (dirImportOpts | PresetName)[]): (ImportsMap | Prese
   }
 
   return [importMap, ...presetNames];
+};
+
+
+// 如果修改了需要自动导出的文件，重启服务器（auto-import.d.ts才会更新）
+export default (): Plugin => {
+  return {
+    name: "plugin-vue:importsListen",
+    handleHotUpdate({ file, server }) {
+      for (const path of paths) file.endsWith(path) && server.restart();
+    },
+  };
+
 };
 

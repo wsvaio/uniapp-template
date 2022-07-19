@@ -10,20 +10,21 @@ import { transformerDirectives, presetIcons, presetUno } from "unocss";
 
 import { UnocssToUni } from 'vite-plugin-unocss-to-uni';
 
-import imports from "./imports";
-import compiler from "./compiler";
+import sfcExtendTag from "./sfcExtendTag";
+import importsListen, { imports } from "./autoImportConfigExtends";
 
 import { resolve } from "path";
 
 
 
 export default <PluginOption[]>[
+  // 检查根<template>是否有tag属性 如果有则在原来的基础上添加这个tag标签包裹
+  sfcExtendTag(),
+
   uni({
     vueOptions: {
       // 开启 vue $() 语法糖
       reactivityTransform: true,
-      // 检查根<template>是否有tag属性 如果有则在原来的基础上添加这个tag标签包裹
-      compiler,
     },
   }),
 
@@ -57,6 +58,8 @@ export default <PluginOption[]>[
 
     ]
   }),
+  // 自动引入的文件修改后重启服务器（auto-imports.d.ts才会更新）
+  importsListen(),
 
   // 组件自动引入
   Components({
