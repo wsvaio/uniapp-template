@@ -34,6 +34,11 @@
     "build:quickapp-webview": "uni build -p quickapp-webview",
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint:lint-staged": "lint-staged",
     "type-check": "vue-tsc --noEmit",
     "prepare": "husky install"
   },
@@ -66,7 +71,11 @@
     "vite-plugin-vue-script-attrs": "^0.1.0",
     "vite-plugin-vue-template-tag": "^0.1.0",
     "vue": "^3.2.47",
-    "vue-tsc": "^1.2.0"
+    "vue-tsc": "^1.2.0",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "conventional-changelog-cli": "^2.2.2",
+    "czg": "^1.4.1"
   },
   "devDependencies": {
     "@dcloudio/types": "^3.2.11",
