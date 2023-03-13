@@ -1,0 +1,13 @@
+{
+  "root": true,
+  "extends": ["@wsvaio/stylelint-config"],
+  "rules": {
+    "unit-no-unknown": [
+      true,
+      {
+        "ignoreUnits": ["rpx"]
+      }
+    ],
+    "import-notation": "string"
+  }
+}

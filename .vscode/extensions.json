@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "voorjaar.windicss-intellisense",
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "mrmlnc.vscode-less",
+    "lokalise.i18n-ally",
+    "heybourn.headwind",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "mikestead.dotenv"
+  ]
+}

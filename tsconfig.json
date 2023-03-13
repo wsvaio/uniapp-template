@@ -1,0 +1,28 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "lib": ["esnext", "dom"],
+    "types": [
+      "@dcloudio/types",
+      "vite/client",
+      "vue/macros-global",
+      "@uni-helper/uni-ui-types",
+      "@uni-helper/uni-app-types"
+    ]
+  },
+
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.ts",
+    "types/**/*.d.ts"
+  ]
+}
