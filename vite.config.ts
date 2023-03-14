@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
         imports: ["pinia", "uni-app"],
         vueTemplate: true,
         defaultExportByFilename: true,
-        dirs: ["src/utils", "src/composables", "src/stores", "src/apis/*/index*"],
+        dirs: ["src/utils", "src/composables", "src/stores", "src/apis/index*"],
       }),
       Components({
         dts: resolve(__dirname, "types/auto-components.d.ts"),

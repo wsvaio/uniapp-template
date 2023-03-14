@@ -7,5 +7,6 @@ export default defineStore("main", {
   }),
   actions: {},
   getters: {},
-  persist: {},
+  persist: {
+  },
 });
