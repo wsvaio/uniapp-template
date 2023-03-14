@@ -6,6 +6,16 @@ import { ComponentOptions } from "vue";
 //   }
 // }
 
+// declare module "pinia" {
+//   export interface DefineStoreOptionsBase<S, Store> {
+//     // 允许为任何操作定义毫秒数
+//     persist?: {
+//       key: string,
+//       paths?: string[],
+//     }
+//   }
+// }
+
 declare module "vue-router" {
   interface RouteMeta {
     title?: string;
@@ -26,5 +36,7 @@ declare global {
     -readonly [K in keyof T]: T[K];
   };
 }
+
+interface IntrinsicElementAttributes {}
 
 export {};
