@@ -1,4 +1,4 @@
 {
-  "extends": ["@wsvaio"]
-  
+	"root": true,
+	"extends": ["@wsvaio"]
 }

@@ -1,31 +1,23 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.json",
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "lib": ["esnext", "dom"],
-    "types": [
-      "@dcloudio/types",
-      "vite/client",
-      "vue/macros-global",
-      "@uni-helper/uni-ui-types",
-      "@uni-helper/uni-app-types"
-    ]
-  },
-
-  "vueCompilerOptions": {
-    "nativeTags": ["block", "component", "template", "slot"],
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "types/**/*.ts",
-    "types/**/*.d.ts"
-  ]
+	"extends": "@vue/tsconfig/tsconfig.json",
+	"compilerOptions": {
+		"sourceMap": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"lib": ["esnext", "dom"],
+		"types": [
+			"@dcloudio/types",
+			"vite/client",
+			"vue/macros-global",
+			"@tuniao/tnui-vue3-uniapp/global.d.ts",
+			"@uni-helper/uni-ui-types",
+			"@uni-helper/uni-app-types"
+		]
+	},
+	"vueCompilerOptions": {
+		"nativeTags": ["block", "component", "template", "slot"]
+	},
+	"include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.ts", "types/**/*.d.ts"]
 }

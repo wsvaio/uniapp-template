@@ -1,13 +1,30 @@
 {
-  "root": true,
-  "extends": ["@wsvaio/stylelint-config"],
-  "rules": {
-    "unit-no-unknown": [
-      true,
-      {
-        "ignoreUnits": ["rpx"]
-      }
-    ],
-    "import-notation": "string"
-  }
+	"root": true,
+	"extends": ["@wsvaio/stylelint-config"],
+	"rules": {
+		"media-feature-range-notation": null,
+
+		"order/order": [
+			"at-rules",
+			"custom-properties",
+			"dollar-variables",
+			"at-variables",
+			"declarations",
+			"rules",
+			"less-mixins"
+		],
+
+		"function-no-unknown": [
+			true,
+			{
+				"ignoreFunctions": ["extend"]
+			}
+		],
+		"unit-no-unknown": [
+			true,
+			{
+				"ignoreUnits": ["rpx"]
+			}
+		]
+	}
 }

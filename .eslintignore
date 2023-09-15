@@ -1,8 +1,8 @@
 .husky
 .vscode
-node_modules
-public
-dist
+node_modules/
+public/
+dist/
 
 * copy*
 auto-import.d.ts
